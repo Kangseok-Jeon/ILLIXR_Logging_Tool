@@ -1,8 +1,12 @@
 import os
 
+# Check strings in certain folders
 def search_string_in_folder(folder_path, target_string):
     for root, dirs, files in os.walk(folder_path):
         for file in files:
+            # Only search cases for extension .cpp and .hpp.
+            # if not (file.endswith(".cpp")):
+            #   continue
             file_path = os.path.join(root, file)
 
             try:
@@ -15,8 +19,10 @@ def search_string_in_folder(folder_path, target_string):
             except Exception as e:
                 print(f"Failed to Open File: {file_path} - {e}")
 
-folder_path = '/home/nokdujeon/kangseok/ILLIXR/build/_deps'
-target_string = '[TIME'
+# Select folder path
+folder_path = '/home/nokdujeon/kangseok/ILLIXR'
+# folder_path = '/home/nokdujeon/Downloads/godot-4.4.1-stable'
+
+target_string = 'log_frame_time_diff'
 
 search_string_in_folder(folder_path, target_string)
-
